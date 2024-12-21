@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <style>
+        .f-control{
+            display: none;
+        }
+        *{
+            margin:0;          
+            padding: 0;
+        }
+        body{
+            padding: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7f7f7;
+            user-select: none;
+            background-image: url(../images/form.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .first{
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+        
+           /* margin: auto;
+            max-height: 75vh;
+            max-width: 450px;*/
+        }
+        .f-control{
+
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+           /* margin: auto;
+            max-height: 75vh;
+            max-width: 450px;*/
+        }
+        form{
+            background-color: #ffffffc7;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 450px;
+            min-height:400px ;
+        }
+        input{
+            margin-bottom: 10px;
+        }
+        .sub{
+            display: flex;
+            justify-content: center;
+        }
+        label{
+            font-weight: bold;
+        }
+        .sub-btn{
+            padding: 5px 10px;
+            border: none;
+            color: rgba(255, 255, 255, 0.904);
+            background-color: rgb(32, 158, 32);
+            border-radius: 4px;
+            margin:15px 0px 10px 0px;
+        } 
+        .sub-btn:hover{
+            background-color: rgb(22, 116, 22);
+            /* background-color: #218838; */
+        }
+        @media (max-width:576px) {
+            form{
+               margin: auto 5px;
+            }
+        }
+     </style>
+</head>
+<body>
+    <form id="checkCertificateForm" action="javascript:void(0)" class="first">
+        <label for="altercn" class="form-label pt-4 pb-2">Certificate Number</label>
+        <input type="tel" id="altercn" class="form-control pb-2" placeholder="Enter Certificate Number" required>
+        <div id="errorMessage" style="color: red; margin-top: 10px;"></div>
+        <center>
+        <button type="submit" class="btn btn-success w-100 py-1 my-3">Alter Student Details</button>
+    </center>
+    </form>
+    
+
+<!-- -------------alter  all details------------ -->
+<div class="f-control">
+    <form action="../php/alter.php" method="POST" enctype="multipart/form-data">
+        <h2 class="text-center mt-1 mb-2">Alter Student Details</h2>
+        <label for="sname" class="form-label">Change the Student Name</label>
+        <input type="text" id="sname" name="studentName" class="form-control" placeholder="Enter Name" required
+        >
+
+        <label for="sno" class="form-label">Change the Phone Number</label>
+        <input type="tel" id="sno" name="phoneNumber"  class="form-control" placeholder="Enter Phone Number" required
+        >   
+        
+        <label for="scno" class="form-label">Change the Certificate Number</label>
+        <input type="tel" id="scno" name="certificateNumber"  class="form-control" placeholder="Enter Certificate Number" required
+        >  
+      
+        
+      <label for="imageUpload" class="mb-3 form-label"> Change the File:</label>
+       <input type="file" id="imageUpload" name="image"  class="form-control" required> <br>
+       <div class="sub">   
+            <button type="submit" name="submit" class="sub-btn w-100 p-2 fw-semibold">Save Changes</button>
+       </div>
+  
+    </form>
+</div>
+
+
+
+
+
+
+    <script>
+        document.getElementById("checkCertificateForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent default form submission
+        
+            const certificateNumber = document.getElementById("altercn").value;
+        
+            // Send a request to the server to check if the certificate number exists
+            fetch("../php/check_certificate.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ certificateNumber }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.exists) {
+                        // Show the next form if the certificate exists
+                        document.querySelector(".first").style.display = "none";
+                        document.querySelector(".f-control").style.display = "block";
+                        document.getElementById("altercn").disabled = true;
+                        document.querySelector("button.btn-success").disabled = true;
+                    } else {
+                        // Show an error message if the certificate doesn't exist
+                        document.getElementById("errorMessage").textContent = "certificate doesn't exist.";
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        });
+        
+    </script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

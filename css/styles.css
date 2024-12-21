@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    user-select: none;
+    background-image: url(../images/form11.jpg);
+           background-repeat: no-repeat;
+            background-size:cover; 
+}
+.box{
+    background-image: url(../images/form4.jpeg);
+           background-repeat: no-repeat;
+            background-size:cover;
+   
+}
+header{
+    color: white;
+background-color:#01014b;
+}
+.header{
+display: flex;
+justify-content: space-between;
+text-align: center;
+padding: 8px 0px;
+}
+.header-logo{
+    width: 90px;
+    padding: 10px 5px;
+    height: 50px;
+}
+.header-content{
+margin-top: 10px;
+}
+.box{
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 60vh;
+    max-width: 75%;
+   margin: auto;
+   border-radius: 6px;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+   background-color: #f4f4f4;
+}
+label{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 540;
+}
+.form-control{
+    margin-bottom: 10px;
+}
+.sub{
+    display: flex;
+    justify-content: center;
+}
+
+.sub-btn{
+    
+    padding: 5px 10px;
+    border: none;
+    color: rgba(255, 255, 255, 0.904);
+    background-color: rgb(32, 158, 32);
+    border-radius: 4px;
+    margin:15px 0px 10px 0px;
+} 
+.sub-btn:hover{
+    background-color: rgb(22, 116, 22);
+    /* background-color: #218838; */
+}
+.svg{
+    max-width: 24px;
+    max-height: 24px;
+    fill:#41c7be;
+}
+
+.details
+{
+    margin-left: 8px;
+    
+
+}
+footer{
+    color: white;
+background-color:#01014b;
+padding: 30px 20px;
+}
+.use .use-li{
+    list-style-type:none ;
+}
+.use .use-li::before{
+    content: '>';
+    font-weight: bold;
+    color: #41c7be;
+
+}
+
+
+
+
+
+/* offcanvas */
+.offcanvas-header
+{
+    background-color: #01014b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.login{
+    display: flex;
+    justify-content: flex-start;
+}
+
+/*  Break-points */
+@media (min-width: 576px) {
+    .box {
+        max-width: 480px;
+        max-height: 500px;
+        padding-top: 50px;
+    }
+}
+@media (min-width: 576px) {
+    .box {
+        max-width: 480px;
+    }
+}
+
+@media (min-width: 768px) {
+    .box {
+        max-width: 500px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .box {
+        max-width: 500px;
+    }
+}
+
+/* script-style */
+.pn,.cn{
+    padding-left: 2px;
+    font-size: small;
+
+}

@@ -1,0 +1,35 @@
+body{
+    margin-top: 70px;
+}
+body::before{
+    content: 'xs';
+    color: red;
+    font-size: 30px;
+    position: fixed;
+    top: 10;
+    left: 10;
+}
+@media (min-width:576) {
+    body::before{
+        content:'sm';
+    }
+    
+}
+@media (min-width:768) {
+    body::before{
+        content:'md';
+    }
+    
+}
+@media (min-width:992) {
+    body::before{
+        content:'lg';
+    }
+    
+}
+@media (min-width:1200) {
+    body::before{
+        content:'xl';
+    }
+    
+}
