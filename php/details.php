@@ -1,9 +1,9 @@
 <?php
 // Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "certificate";
+$servername = "sql309.byetcluster.com";
+$username = "cpfr_37749839";
+$password = "0kNen2iW07";
+$dbname = "cpfr_37749839_certificate";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

@@ -1,9 +1,9 @@
 <?php
 // Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "certificate";
+$servername = "sql309.byetcluster.com";
+$username = "cpfr_37749839";
+$password = "0kNen2iW07";
+$dbname = "cpfr_37749839_certificate";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -48,7 +48,7 @@ $result = $conn->query($sql);
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    
+                    <th>S_no</th>
                     <th>Phone Number</th>
                     <th>Student Name</th>
                     <th>Certificate Number</th>
@@ -58,9 +58,13 @@ $result = $conn->query($sql);
                 </tr>
             </thead>
             <tbody>
+                <?php $sno=0; ?>
                 <?php if ($result->num_rows > 0): ?>
+                        
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
+                            <?php $sno++; ?>
+                         <td><?php echo $sno; ?></td>
                             <td><?php echo htmlspecialchars($row['phone_no']); ?></td>
                             <td><?php echo htmlspecialchars($row['sname']); ?></td>
                             <td><?php echo htmlspecialchars($row['certificate_no']); ?></td>
